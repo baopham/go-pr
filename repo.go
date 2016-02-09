@@ -16,7 +16,7 @@ type Repo struct {
 
 func NewRepo(remote string, branch string) *Repo {
 
-    username, repo := ParseGithubRemote(remote)
+    username, repo := parseGithubRemote(remote)
 
     return &Repo {
         remote: remote,
@@ -31,18 +31,4 @@ func NewRepo(remote string, branch string) *Repo {
 
 func (r Repo) IsGithub() bool {
     return strings.Contains(r.remote, "github.com")
-}
-
-func ParseGithubRemote(remote string) (string, string) {
-    var path string
-
-    if strings.Contains(remote, "git@github.com:") {
-        path = strings.Replace(remote, "git@github.com:", "", 1)
-    } else {
-        path = strings.Replace(remote, "https://github.com/", "", 1)
-    }
-
-    username, repo := usernameAndRepo(path)
-
-    return username, repo
 }

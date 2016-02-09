@@ -90,3 +90,18 @@ func parseTarget(target string, currentRepo *Repo) *Repo {
         branch: branch,
     }
 }
+
+
+func parseGithubRemote(remote string) (string, string) {
+    var path string
+
+    if strings.Contains(remote, "git@github.com:") {
+        path = strings.Replace(remote, "git@github.com:", "", 1)
+    } else {
+        path = strings.Replace(remote, "https://github.com/", "", 1)
+    }
+
+    username, repo := usernameAndRepo(path)
+
+    return username, repo
+}
