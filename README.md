@@ -38,7 +38,7 @@ Install:
 go get github.com/baopham/go-pr
 ```
 
-Make sure you have `$GOPATH` set and `$GOPATH/bin` is in the '$PATH', e.g.:
+Make sure you have `$GOPATH` set and `$GOPATH/bin` is in the `$PATH`, e.g.:
 
 ```bash
 export GOPATH=$HOME/Projects/Go
