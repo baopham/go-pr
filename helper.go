@@ -56,7 +56,7 @@ func parseTarget(target string, currentRepo *Repo) *Repo {
     var branch, username, repo string
 
     // target-user/target-repo@target-branch
-    if strings.Contains(target, "@") {
+    if strings.Contains(target, "@") && strings.Contains(target, "/") {
         slices := strings.Split(target, "@")
 
         path := slices[0]
@@ -71,11 +71,19 @@ func parseTarget(target string, currentRepo *Repo) *Repo {
 
         username, repo = usernameAndRepo(target)
 
-    // target-branch
-    } else {
+    // @target-branch
+    } else if strings.Contains(target, "@") {
         username = currentRepo.username
 
-        branch = strings.TrimSpace(target)
+        branch = strings.TrimLeft(target, "@")
+
+        repo = currentRepo.name
+
+    // target-user
+    } else {
+        username = strings.TrimSpace(target)
+
+        branch = "master"
 
         repo = currentRepo.name
     }

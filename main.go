@@ -12,7 +12,12 @@ func main() {
     app := cli.NewApp()
     app.Name = "go-pr"
     app.Usage = "Create a Pull Request for the current branch"
-    app.UsageText = "go-pr target-branch OR go-pr target-user/target-repo@target-branch OR go-pr target-user/target-repo"
+    app.UsageText = `
+    go-pr @target-branch # default target-user to your Github user
+    go-pr target-user/target-repo@target-branch
+    go-pr target-user/target-repo # default target-branch to master
+    go-pr target-user # default target-branch to master and target-repo to the name of your Github repo
+    `
     app.Version = "0.0.1"
     app.Author = "Bao Pham"
     app.Email = "gbaopham@gmail.com"
