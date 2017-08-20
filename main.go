@@ -18,7 +18,7 @@ func main() {
     go-pr target-user/target-repo # default target-branch to master
     go-pr target-user # default target-branch to master and target-repo to the name of your Github repo
     `
-	app.Version = "0.0.1"
+	app.Version = "0.0.2"
 	app.Author = "Bao Pham"
 	app.Email = "gbaopham@gmail.com"
 
