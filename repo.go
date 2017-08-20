@@ -1,34 +1,34 @@
 package main
 
 import (
-    "strings"
+	"strings"
 )
 
 type Repo struct {
-    remote string
+	remote string
 
-    username string
+	username string
 
-    name string
+	name string
 
-    branch string
+	branch string
 }
 
 func NewRepo(remote string, branch string) *Repo {
 
-    username, repo := parseGithubRemote(remote)
+	username, repo := parseGithubRemote(remote)
 
-    return &Repo {
-        remote: remote,
+	return &Repo{
+		remote: remote,
 
-        username: username,
+		username: username,
 
-        name: repo,
+		name: repo,
 
-        branch: branch,
-    }
+		branch: branch,
+	}
 }
 
 func (r Repo) IsGithub() bool {
-    return strings.Contains(r.remote, "github.com")
+	return strings.Contains(r.remote, "github.com")
 }
